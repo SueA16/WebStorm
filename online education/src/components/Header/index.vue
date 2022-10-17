@@ -46,19 +46,65 @@
             v-model="input1"
             class="my-input"
             placeholder="请输入手机号"
-            :prefix-icon="Search"
+            :prefix-icon="Iphone"
         />
         <el-input
             v-model="input1"
             class="my-input"
-            placeholder="请输入手机号"
-            :prefix-icon="Search"
+            placeholder="请输入密码"
+            :prefix-icon="Lock"
         />
         <br>
         <lay-button style="width: 360px;height: 46px;margin-left: 80px;background-color: #00c758;color: white">登录</lay-button>
+        <el-row style="margin: 20px 0 0 80px">
+          <el-switch v-model="value1" size="small" />
+          <p style="margin:3px 0 5px 5px;font-size: 10px;cursor:pointer;user-select:none;" @click="value1=!value1">十天内免登录</p>
+          <p style="margin:3px 0 5px 200px;font-size: 10px;cursor:pointer;user-select:none;">忘记密码？</p>
+        </el-row>
       </div>
-      <div class="loginByEmail" v-show="visibleList[1]">222</div>
-      <div class="signup" v-show="visibleList[2]">333</div>
+      <div class="loginByEmail" v-show="visibleList[1]">
+        <el-input
+            v-model="input1"
+            class="my-input"
+            placeholder="请输入邮箱地址"
+            :prefix-icon="Message"
+        />
+        <el-input
+            v-model="input1"
+            class="my-input"
+            placeholder="请输入密码"
+            :prefix-icon="Lock"
+        />
+        <br>
+        <lay-button style="width: 360px;height: 46px;margin-left: 80px;background-color: #00c758;color: white">登录</lay-button>
+        <el-row style="margin: 20px 0 0 80px">
+          <el-switch v-model="value1" size="small" />
+          <p style="margin:3px 0 5px 5px;font-size: 10px;cursor:pointer;user-select:none;" @click="value1=!value1">十天内免登录</p>
+          <p style="margin:3px 0 5px 200px;font-size: 10px;cursor:pointer;user-select:none;">忘记密码？</p>
+        </el-row>
+      </div>
+      <div class="signup" v-show="visibleList[2]">
+        <el-input
+            v-model="input1"
+            class="my-input"
+            placeholder="请输入手机号"
+            :prefix-icon="Iphone"
+        />
+        <el-input
+            v-model="input1"
+            class="my-input"
+            placeholder="请输入密码"
+            :prefix-icon="Lock"
+        />
+        <el-input
+            v-model="input1"
+            class="my-input1"
+            placeholder="请输入验证码"
+        />
+        <lay-button style="color: #00c758;height: 46px;width: 150px; margin:0 0 30px 20px;">获取验证码</lay-button>
+        <br>
+        <lay-button style="width: 360px;height: 46px;margin-left: 80px;background-color: #00c758;color: white">注册并登录</lay-button>
+      </div>
     </el-dialog>
   </div>
 
@@ -66,12 +112,13 @@
 
 <script setup>
 import {ref} from 'vue'
-import {Search} from '@element-plus/icons-vue'
+import {Iphone,Lock,Search,Message} from '@element-plus/icons-vue'
 import {ElButton, ElDialog} from 'element-plus'
 const input1 = ref('')
 let searchData = ref('')
 const visible = ref(false)
 const visibleList = ref([true, false, false])
+const value1 = ref(true)
 const changeVisible = (index) => {
   for(let i=0;i<3;i++){
     visibleList.value[i] = i === index;
@@ -135,5 +182,14 @@ a:hover {
   width: 360px;
   margin-left: 80px;
   margin-bottom: 30px;
+}
+.my-input1{
+  height: 46px;
+  width: 190px;
+  margin-left: 80px;
+  margin-bottom: 30px;
+}
+.el-switch.is-checked{
+  --el-switch-on-color:#00c758;
 }
 </style>
